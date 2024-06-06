@@ -1,4 +1,24 @@
-class Sensor {}
+class Sensor {
+    constructor(id, name, type, value, unit, updated_at) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this._value = value;
+        this.unit = unit;
+        this.updated_at = updated_at;
+    }
+
+    // Getter para obtener el valor del sensor
+    get value() {
+        return this._value;
+    }
+
+    // Setter para actualizar el valor del sensor y la fecha de actualización
+    set updateValue(newValue) {
+        this._value = newValue;
+        this.updated_at = new Date().toISOString(); // Actualiza la fecha de actualización
+    }
+}
 
 class SensorManager {
     constructor() {
@@ -14,16 +34,16 @@ class SensorManager {
         if (sensor) {
             let newValue;
             switch (sensor.type) {
-                case "temperatura": // Rango de -30 a 50 grados Celsius
+                case "temperature":
                     newValue = (Math.random() * 80 - 30).toFixed(2);
                     break;
-                case "humedad": // Rango de 0 a 100%
+                case "humidity":
                     newValue = (Math.random() * 100).toFixed(2);
                     break;
-                case "presion": // Rango de 960 a 1040 hPa (hectopascales o milibares)
+                case "pressure":
                     newValue = (Math.random() * 80 + 960).toFixed(2);
                     break;
-                default: // Valor por defecto si el tipo es desconocido
+                default:
                     newValue = (Math.random() * 100).toFixed(2);
             }
             sensor.updateValue = newValue;
@@ -33,7 +53,26 @@ class SensorManager {
         }
     }
 
-    async loadSensors(url) {}
+    async loadSensors(url) {
+        try {
+            const response = await fetch(url);
+            const sensorsData = await response.json();
+            sensorsData.forEach((sensorData) => {
+                const sensor = new Sensor(
+                    sensorData.id,
+                    sensorData.name,
+                    sensorData.type,
+                    sensorData.value,
+                    sensorData.unit,
+                    sensorData.updated_at
+                );
+                this.addSensor(sensor);
+            });
+            this.render();
+        } catch (error) {
+            console.error('Error al cargar los sensores:', error);
+        }
+    }
 
     render() {
         const container = document.getElementById("sensor-container");
@@ -86,5 +125,4 @@ class SensorManager {
 }
 
 const monitor = new SensorManager();
-
 monitor.loadSensors("sensors.json");
