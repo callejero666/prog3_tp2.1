@@ -106,7 +106,7 @@ const reservation1 = new Reservation(1, customer1, "2024-12-31T20:00:00", 4);
 
 if (Reservation.validateReservation(reservation1.date, reservation1.guests)) {
     restaurant.addReservation(reservation1);
-    restaurant.render();
+    restaurant.render(); 
 } else {
     alert("Datos de reserva inválidos");
 }
