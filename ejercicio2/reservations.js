@@ -1,6 +1,34 @@
-class Customer {}
+class Customer {
+    cosntructor(id, name, email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
+    
+    get info() {
+        return `Name: ${this.name}, Email: ${this.email}`;
+    }
 
-class Reservation {}
+}
+
+class Reservation {
+    constructor(id, customer, date, guests) {
+        this.id = id;
+        this.customer = customer;
+        this.date = new Date(date);
+        this.guests = guests;
+    }
+
+    get info () {
+        return `Datos de Fecha y Hs: ${this.date.toLocaleString()}, Clientes: (${this.customer.info}), Cantidad de comensales: ${this.guests}`;
+    }
+
+    static validateReservation (date,guests) {
+        const reservationDate = new Date(date);
+        const currentDate = new Date();
+        return reservationDate > currentDate && guests > 0;
+    }
+}
 
 class Restaurant {
     constructor(name) {
@@ -20,8 +48,7 @@ class Restaurant {
             reservationCard.className = "box";
             reservationCard.innerHTML = `
                     <p class="subtitle has-text-primary">
-                        Reserva ${
-                            reservation.id
+                      Reserva ${reservation.id
                         } - ${reservation.date.toLocaleString()}
                     </p>
                     <div class="card-content">

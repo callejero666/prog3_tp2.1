@@ -8,15 +8,14 @@ class Sensor {
         this.updated_at = updated_at;
     }
 
-    // Getter para obtener el valor del sensor
-    get value() {
+        get value() {
         return this._value;
     }
 
-    // Setter para actualizar el valor del sensor y la fecha de actualización
+    
     set updateValue(newValue) {
         this._value = newValue;
-        this.updated_at = new Date().toISOString(); // Actualiza la fecha de actualización
+        this.updated_at = new Date().toISOString(); 
     }
 }
 
