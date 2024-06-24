@@ -5,6 +5,7 @@ class Customer {
         this.email = email;
     }
     
+    
     get info() {
         return `Name: ${this.name}, Email: ${this.email}`;
     }
