@@ -3,15 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            href="https://academiacimneiber.com/assets/logoClaro-Z6OnHFdL.png"
-        />
+        <link rel="icon" href="https://academiacimneiber.com/assets/logoClaro-Z6OnHFdL.png" />
         <title>Conversor de Moneda</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
-        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
     </head>
     <body>
         <section class="section">
@@ -22,13 +16,7 @@
                         <div class="field">
                             <label class="label">Cantidad</label>
                             <div class="control">
-                                <input
-                                    class="input"
-                                    type="number"
-                                    step="any"
-                                    id="amount"
-                                    required
-                                />
+                                <input class="input" type="number" step="any" id="amount" required />
                             </div>
                         </div>
                         <div class="columns is-multiline is-vcentered">
@@ -54,20 +42,31 @@
                             </div>
                             <div class="column is-one-fifth">
                                 <div class="control">
-                                    <button
-                                        class="button is-primary"
-                                        type="submit"
-                                    >
-                                        Convertir
-                                    </button>
+                                    <button class="button is-primary" type="submit">Convertir</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Fecha 1</label>
+                                    <div class="control">
+                                        <input class="input" type="date" id="date1" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field">
+                                    <label class="label">Fecha 2</label>
+                                    <div class="control">
+                                        <input class="input" type="date" id="date2" required />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <div
-                        id="result"
-                        class="subtitle mt-4 has-text-primary"
-                    ></div>
+                    <div id="result" class="subtitle mt-4 has-text-primary"></div>
+                    <div id="difference" class="subtitle mt-4 has-text-info"></div>
                 </div>
             </div>
         </section>
