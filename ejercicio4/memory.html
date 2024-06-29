@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            href="https://academiacimneiber.com/assets/logoClaro-Z6OnHFdL.png"
-        />
-        <title>Juego de Memoria</title>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
-        />
-        <link rel="stylesheet" href="memory.css" />
-    </head>
-    <body>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">Juego de Memoria</h1>
-                <button id="restart-button" class="button is-primary">
-                    Reiniciar Juego
-                </button>
-                <div class="fixed-grid has-4-cols">
-                    <div id="game-board" class="grid"></div>
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="https://academiacimneiber.com/assets/logoClaro-Z6OnHFdL.png" />
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+    <link rel="stylesheet" href="memory.css" />
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Juego de Memoria</h1>
+            <button id="restart-button" class="button is-primary">Reiniciar Juego</button>
+            <div id="game-info">
+                <p id="move-counter">Movimientos: 0</p>
+                <p id="timer">Tiempo: 0s</p>
+                <p id="score">Puntuación: 0</p>
             </div>
-        </section>
-
-        <script src="memory.js"></script>
-    </body>
+            <div class="fixed-grid has-4-cols">
+                <div id="game-board" class="grid"></div>
+            </div>
+        </div>
+    </section>
+    <script src="memory.js"></script>
+</body>
 </html>

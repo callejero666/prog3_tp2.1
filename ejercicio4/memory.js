@@ -150,11 +150,15 @@ class MemoryGame {
  
     checkForMatch() {
         const [firstCard, secondCard] = this.flippedCards;
-            if (firstCard.matches(secondCard)) {
-            this.matchedCards.push(firstCard, secondCard)
+        if (firstCard.matches(secondCard)) {
+            this.matchedCards.push(firstCard, secondCard);
             this.flippedCards = [];
             if (this.matchedCards.length === this.board.cards.length) {
-                alert("¡Ganaste!");//continuar aca
+                clearInterval(this.timerInterval);
+                this.endTime = new Date();
+                const timeTaken = (this.endTime - this.startTime) / 1000;
+                const score = this.calculateScore(timeTaken, this.moveCount);
+                alert(`¡Has ganado! Tiempo: ${timeTaken} segundos, Movimientos: ${this.moveCount}, Puntuación: ${score}`);
             }
         }else {
             setTimeout(() => {
@@ -165,10 +169,19 @@ class MemoryGame {
         }
     }
 
+    calculateScore(time, moves) {
+        return Math.max(1000 - (time + moves * 10), 0);
+    }
+
     resetGame() {
         this.flippedCards = [];
         this.matchedCards = [];
+        this.moveCount = 0;
+        this.startTime = null;
+        this.endTime = null;
+        clearInterval(this.timerInterval);
         this.board.reset();
+        this.updateGameInfo();
     }
 }
 
